@@ -15,7 +15,7 @@
 
 [image1]: ./kuka_arm.png
 [image2]: ./link_assigments.png
-[image3]: ./misc_images/misc2.png
+[image3]: ./matrix.png
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -90,11 +90,17 @@ i | alpha(i-1) | a(i-1) | d(i) | theta(i)
 [0, 0, 1, 0.303], 
 [0, 0, 0, 1]]
 
+##### Rotation part (RT) of the complete homogeneous transform:
+[[cos(p)*cos(y), sin(p)*sin(r)*cos(y) - sin(y)*cos(r), sin(p)*cos(r)*cos(y) + sin(r)*sin(y)], [sin(y)*cos(p), sin(p)*sin(r)*sin(y) + cos(r)*cos(y), sin(p)*sin(y)*cos(r) - sin(r)*cos(y)], [-sin(p), sin(r)*cos(p), cos(p)*cos(r)]]
+
+##### Here is how complete homogeneous transform will looks like:
+![complete homogeneous transform][image3]
+
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
 And here's where you can draw out and show your math for the derivation of your theta angles. 
 
-![alt text][image2]
+
 
 ### Project Implementation
 
