@@ -109,7 +109,7 @@ Here is supporting visuals for theta 1
 ![theta1][image4]
 
 And here are supporting visuals for theta 2 and 3
-![theta1][image4]
+![theta2 and theta3][image5]
 
 theta 4 5 and 6 can be found using Euler angles from rotation matrix
 
