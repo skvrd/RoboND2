@@ -16,6 +16,9 @@
 [image1]: ./kuka_arm.png
 [image2]: ./link_assigments.png
 [image3]: ./matrix.png
+[image4]: ./theta1.jpg
+[image5]: ./theta2-3.png
+
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -98,18 +101,26 @@ i | alpha(i-1) | a(i-1) | d(i) | theta(i)
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
-And here's where you can draw out and show your math for the derivation of your theta angles. 
+Since the last three joints in our robot are revolute and their joint axes intersect at a single point, we have a case of spherical wrist with joint_5 being the common intersection point and hence the wrist center.
 
+This allows us to kinematically decouple the IK problem into Inverse Position and Inverse Orientation problems as discussed in the Inverse Kinematics theory lesson.
 
+Here is supporting visuals for theta 1
+![theta1][image4]
+
+And here are supporting visuals for theta 2 and 3
+![theta1][image4]
+
+theta 4 5 and 6 can be found using Euler angles from rotation matrix
+
+More math inside the code.
 
 ### Project Implementation
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
 
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
+Code inside `IK_server.py` file.
 
 
-And just for fun, another example image:
-![alt text][image3]
 
