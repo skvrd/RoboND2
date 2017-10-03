@@ -55,7 +55,7 @@ alpha: angle about common normal
 ![Twist angles][image6]
 
 ##### Link length and offsets
-Those are coming from the urdf file.
+Those are coming from the urdf file (each joint is defined **relative** to its parent).
 
 Here is a DH parameters table for the Kuka arm
 
