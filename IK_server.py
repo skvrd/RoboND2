@@ -68,11 +68,25 @@ def handle_calculate_IK(req):
     	T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)
 
         T0_EE = T0_1 * T1_2 * T2_3 * T3_4 * T4_5 * T5_6 * T6_EE
-	# Extract rotation matrices from the transformation matrices
-	#
-	#
-        ###
 
+
+	# EE Rotation matrix
+	# RPY rotation matrices
+	r, p, y = symbols('r p y')
+	#Roll
+	ROT_x = Matrix([    [1,      0,       0],
+				[0, cos(r), -sin(r)],
+				[0, sin(r),  cos(r)]]) 
+	#Pitch
+	ROT_y = Matrix([    [cos(p),  0, sin(p)],
+				[0,       1,      0],
+				[-sin(p), 0, cos(p)]])
+        #Yaw
+	ROT_z = Matrix([[cos(y),-sin(y),0],
+				[sin(y), cos(y),0],
+				[0, 0, 1]])
+            
+	ROT_EE = ROT_z * ROT_y * ROT_x
 
 
         # Initialize service response
@@ -93,23 +107,7 @@ def handle_calculate_IK(req):
                     req.poses[x].orientation.z, req.poses[x].orientation.w])
      
             ### Your IK code here 
-	    # EE Rotation matrix
-	    # RPY rotation matrices
-	    r, p, y = symbols('r p y')
-	    #Roll
-	    ROT_x = Matrix([    [1,      0,       0],
-				[0, cos(r), -sin(r)],
-				[0, sin(r),  cos(r)]]) 
-	    #Pitch
-	    ROT_y = Matrix([    [cos(p),  0, sin(p)],
-				[0,       1,      0],
-				[-sin(p), 0, cos(p)]])
-            #Yaw
-	    ROT_z = Matrix([[cos(y),-sin(y),0],
-				[sin(y), cos(y),0],
-				[0, 0, 1]])
-            
-	    ROT_EE = ROT_z * ROT_y * ROT_x
+
 	  
 	    
 
