@@ -141,5 +141,18 @@ More math inside the code.
 
 Code inside `IK_server.py` file.
 
+#### Areas of improvement
+The main problem is that this project is really slow, there are at least to ways how to fix it:
+1. We can save rotation matrices into the file, so we don;t have to calculate them every time we run service.
+2. We can use Actions instead Service.
+3. We can move all matrices calculations outside of the loop (i did this).
+
+The other problem that I faced with is following: the end effector acts odd. There are a lot of unnecessery rotations of end effector. I'm not quite sure how to fix this issue.
+
+Here is the video that shows the working solution:
+https://www.youtube.com/watch?v=-a61VYQyC1g
+
+
+
 
 
