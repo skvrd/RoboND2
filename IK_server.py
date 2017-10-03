@@ -73,6 +73,8 @@ def handle_calculate_IK(req):
 	#
         ###
 
+
+
         # Initialize service response
         joint_trajectory_list = []
         for x in xrange(0, len(req.poses)):
@@ -91,9 +93,6 @@ def handle_calculate_IK(req):
                     req.poses[x].orientation.z, req.poses[x].orientation.w])
      
             ### Your IK code here 
-
-	  
-	    
 	    # EE Rotation matrix
 	    # RPY rotation matrices
 	    r, p, y = symbols('r p y')
@@ -111,6 +110,9 @@ def handle_calculate_IK(req):
 				[0, 0, 1]])
             
 	    ROT_EE = ROT_z * ROT_y * ROT_x
+	  
+	    
+
 
 	    # Compensate for rotation discrepancy between DH parameters and Gazebo
 	    # Calculate error correction
@@ -145,9 +147,15 @@ def handle_calculate_IK(req):
 	    R3_6 = R0_3.inv("LU") * ROT_EE
 
 	    # Euler angles from rotation matrix
-	    theta4 = atan2(R3_6[2,2], -R3_6[0,2])
-	    theta5 = atan2(sqrt(R3_6[0,2] * R3_6[0,2] + R3_6[2,2]*R3_6[2,2]),R3_6[1,2])
-	    theta6 = atan2(-R3_6[1,1], R3_6[1,0])		
+            theta5 = atan2(sqrt(R3_6[0,2] * R3_6[0,2] + R3_6[2,2]*R3_6[2,2]),R3_6[1,2])
+ 	    
+            # this is check is here to avoid multiple solutions
+	    if sin(theta5) < 0:
+	        theta4 = atan2(-R3_6[2,2], R3_6[0,2])
+	        theta6 = atan2(R3_6[1,1], -R3_6[1,0])
+            else:
+	        theta4 = atan2(R3_6[2,2], -R3_6[0,2])
+	        theta6 = atan2(-R3_6[1,1], R3_6[1,0])                		
             # Populate response for the IK request
             # In the next line replace theta1,theta2...,theta6 by your joint angle variables
 	    joint_trajectory_point.positions = [theta1, theta2, theta3, theta4, theta5, theta6]
