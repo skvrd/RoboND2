@@ -18,6 +18,7 @@
 [image3]: ./matrix.png
 [image4]: ./theta1.jpg
 [image5]: ./theta2-3.png
+[image6]: ./twist.png
 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
@@ -37,7 +38,26 @@ Here is an forward kinematics demo screenshot.
 
 ![FWD kinematics demo screenshot][image1]
 
-Here is a DH parameters table
+Four transformation parameters are known as D–H parameters:
+
+d:     offset along previous z to the common normal
+
+theta: angle about previous z, from old x to new x
+
+a:     length of the common normal.
+
+alpha: angle about common normal
+
+##### Link assigments 
+![Link assigments][image2]
+
+##### Alpha angles 
+![Twist angles][image6]
+
+##### Link length and offsets
+Those are coming from the urdf file.
+
+Here is a DH parameters table for the Kuka arm
 
 i | alpha(i-1) | a(i-1) | d(i) | theta(i)
 --- | --- | --- | --- | ---
@@ -50,8 +70,7 @@ i | alpha(i-1) | a(i-1) | d(i) | theta(i)
 7 or g(reeper) | 0 | 0 | 0.303 | 0
 
 
-##### Link assigments 
-![Link assigments][image2]
+
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
